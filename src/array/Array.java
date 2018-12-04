@@ -73,13 +73,26 @@ public class Array<E> {
         this.add(size,e);
     }
     //获取index处的元素
-    E get(int index){
+    public E get(int index){
         //边界条件判断
         if(index<0 || index >= size){
             throw new IllegalArgumentException("Get element fail\n");
         }
         return data[index];
     }
+    /*
+    * 更新指定位置的元素
+    *
+    * @param index 要更新的位置
+    * @param element 更新的元素
+    * */
+    public void set(int index,E element){
+        if(index<0 || index >= size){
+            throw new IllegalArgumentException("index的范围需要在[0,index)");
+        }
+        data[index] = element;
+    }
+    
     private void resize(int newCapacity){
         E[] newData = (E[]) new Object[newCapacity];
         for(int i=0;i<size;i++){
