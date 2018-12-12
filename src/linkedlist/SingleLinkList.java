@@ -35,4 +35,47 @@ public class SingleLinkList {
         }
         return p;
     }
+
+    //无头结点
+    //表头部插入
+    public void insertToHead(Node newNode){
+        if(head == null){
+            head = newNode;
+        }else{
+            newNode.next = head.next;
+            head.next = newNode;
+        }
+    }
+    public void insertToHead(int value){
+        Node newNode = new Node(value,null);
+        insertToHead(newNode);
+    }
+
+    //顺序插入
+    //链表尾部插入
+    public void insertTail(int value){
+        Node newNode = new Node(value,null);
+        if(head==null){
+            head = newNode;
+        }else{
+            Node q = head;
+            while(q.next!=null){
+                q = q.next;
+            }
+            newNode.next = q.next;
+            q.next = newNode;
+        }
+    }
+
+    //在某个节点之后插入数据
+    public void insertAfter(Node p,Node newNode){
+        if(p==null) return;
+        newNode.next = p.next;
+        p.next = newNode;
+    }
+
+    public void insertAfter(Node p,int value){
+        Node newNode = new Node(value,null);
+        insertAfter(p,newNode);
+    }
 }
