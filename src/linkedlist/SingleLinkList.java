@@ -78,4 +78,51 @@ public class SingleLinkList {
         Node newNode = new Node(value,null);
         insertAfter(p,newNode);
     }
+    //在某个节点之前加入节点
+    public void insertBefore(Node p,Node newNode){
+        if(p == null) return;
+        if(head == p){
+            insertToHead(p);
+            return;
+        }
+        Node q = head;
+        while(q.next != p){
+            q = q.next;
+        }
+        if(q == null){
+            return;
+        }
+        newNode.next = p;
+        q.next = newNode;
+    }
+    public void insertBefore(Node p;int value){
+        Node newNpde = new Node(value,null);
+        insertBefore(p,newNpde);
+    }
+
+    public void deleteByValue(int value){
+        if(head == null){
+            return;
+        }
+        Node p = head;
+        Node q = null;
+        while(p!=null && p.data!=value){
+            q = p;
+            p = p.next;
+        }
+        if(p == null) return;
+        if(q == null){
+            head = head.next;
+        }else{
+            q.next = q.next.next;
+        }
+    }
+    public void printAll(){
+        Node p = head;
+        while(p!=null){
+            System.out.print(p.data+" ");
+            p = p.next;
+        }
+        System.out.println();
+    }
 }
